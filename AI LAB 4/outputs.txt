@@ -1,0 +1,42 @@
+Process S: g=0, h=5, f=5, path=S
+update A: g=1, h=4, f=5
+update B: g=4, h=4, f=8
+Process A: g=1, h=4, f=5, path=S -> A
+update C: g=3, h=2, f=5
+Process C: g=3, h=2, f=5, path=S -> A -> C
+update G: g=6, h=0, f=6
+Process G: g=6, h=0, f=6, path=S -> A -> C -> G
+Goal reached. Path=S -> A -> C -> G, returned cost=6, independently cost=6
+Procesed trace: ['S', 'A', 'C', 'G']
+Expanded nodes: ['S', 'A', 'C']
+Expansion count: 3
+Process S: g=0, h=0, f=0, path=S
+update A: g=1, h=0, f=1
+update B: g=4, h=0, f=4
+Process A: g=1, h=0, f=1, path=S -> A
+update C: g=3, h=0, f=3
+Process C: g=3, h=0, f=3, path=S -> A -> C
+update G: g=6, h=0, f=6
+Process B: g=4, h=0, f=4, path=S -> B
+Process G: g=6, h=0, f=6, path=S -> A -> C -> G
+Goal reached. Path=S -> A -> C -> G, returned cost=6, independently cost=6
+Procesed trace: ['S', 'A', 'C', 'B', 'G']
+Expanded nodes: ['S', 'A', 'C', 'B']
+Expansion count: 4
+Process S: g=0, h=5, f=5, path=S
+update A: g=1, h=4, f=5
+update B: g=4, h=4, f=8
+Process A: g=1, h=4, f=5, path=S -> A
+update C: g=3, h=10, f=13
+Process B: g=4, h=4, f=8, path=S -> B
+update G: g=9, h=0, f=9
+Process G: g=9, h=0, f=9, path=S -> B -> G
+Goal reached. Path=S -> B -> G, returned cost=9, independently cost=9
+Procesed trace: ['S', 'A', 'B', 'G']
+Expanded nodes: ['S', 'A', 'B']
+Expansion count: 3
+
+--- Summary ---
+A*: path=S -> A -> C -> G, cost=6, processed=['S', 'A', 'C', 'G'], expanded=['S', 'A', 'C'], expansion_count=3
+UCS: path=S -> A -> C -> G, cost=6, processed=['S', 'A', 'C', 'B', 'G'], expanded=['S', 'A', 'C', 'B'], expansion_count=4
+A* with h(C)=10: path=S -> B -> G, cost=9, processed=['S', 'A', 'B', 'G'], expanded=['S', 'A', 'B'], expansion_count=3
