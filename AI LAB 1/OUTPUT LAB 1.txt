@@ -1,0 +1,47 @@
+---------------TASK 2-----
+SYNTHETIC thresholds: score>=70, documents complete, gpa>=2.5, income<=50000
+
+T1_pass
+  input    : score=82, complete=True, gpa=3.4, income=35000
+  expected : Review
+  actual   : Review   (MATCH)
+  reason   : all conditions satisfied
+  why chosen: all conditions clearly met
+
+T2_fail_min_gpa
+  input    : score=80, complete=True, gpa=2.1, income=30000
+  expected : Hold
+  actual   : Hold   (MATCH)
+  reason   : failed: minimum_gpa<2.5
+  why chosen: only new condition 1 fal
+
+T3_fail_income
+  input    : score=85, complete=True, gpa=3.2, income=72000
+  expected : Hold
+  actual   : Hold   (MATCH)
+  reason   : failed: income_over_limit>50000
+  why chosen: only new condition 2 fail
+
+T4_boundary
+  input    : score=70, complete=True, gpa=2.5, income=50000
+  expected : Review
+  actual   : Review   (MATCH)
+  reason   : all conditions satisfied
+  why chosen: every threshold exactly  limit 
+
+4/4 core tests matched expectation
+
+
+----------TASK 3--------
+
+
+case | symbolic | threshold | disagreement
+complete_high | Review | Review | False
+complete_low | Hold | Review | True
+incomplete_high | Hold | Review | True
+boundary | Review | Review | False
+
+--- Boundary isolation (Section 1.6) ---
+variant | symbolic | threshold | disagreement
+boundary_score_69 (prob 0.70) | Hold | Review | True
+boundary_prob_0.69 (score 70) | Review | Hold | True
